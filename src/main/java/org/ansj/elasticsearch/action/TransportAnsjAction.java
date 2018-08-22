@@ -2,9 +2,10 @@ package org.ansj.elasticsearch.action;
 
 import org.ansj.domain.Result;
 import org.ansj.domain.Term;
+import org.ansj.elasticsearch.index.analyzer.AnsjAnalyzer;
+import org.ansj.elasticsearch.index.analyzer.OptAnalysis;
 import org.ansj.elasticsearch.index.config.AnsjElasticConfigurator;
 import org.ansj.library.*;
-import org.ansj.lucene7.AnsjAnalyzer;
 import org.ansj.recognition.impl.StopRecognition;
 import org.ansj.recognition.impl.SynonymsRecgnition;
 import org.ansj.splitWord.Analysis;
@@ -110,18 +111,21 @@ public class TransportAnsjAction extends TransportSingleShardAction<AnsjRequest,
         }
 
         switch (AnsjAnalyzer.TYPE.valueOf(type)) {
-            case base_ansj:
-                analysis = new BaseAnalysis();
-                break;
-            case index_ansj:
-                analysis = new IndexAnalysis();
-                break;
-            case dic_ansj:
-                analysis = new DicAnalysis();
-                break;
-            case query_ansj:
-                analysis = new ToAnalysis();
-                break;
+        	case query_ansj:
+				analysis = new ToAnalysis();
+				break;
+			case index_ansj:
+				analysis = new IndexAnalysis();
+				break;
+			case base_ansj:
+				analysis = new BaseAnalysis();
+				break;
+			case dic_ansj:
+				analysis = new DicAnalysis();
+				break;
+			case opt_ansj:
+				analysis = new OptAnalysis();
+				break;
             case nlp_ansj:
                 analysis = new NlpAnalysis();
                 if (StringUtil.isNotBlank(temp = request.get(CrfLibrary.DEFAULT))) {

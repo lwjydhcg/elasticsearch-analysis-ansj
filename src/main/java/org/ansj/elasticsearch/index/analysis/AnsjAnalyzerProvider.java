@@ -1,7 +1,7 @@
 package org.ansj.elasticsearch.index.analysis;
 
+import org.ansj.elasticsearch.index.analyzer.AnsjAnalyzer;
 import org.ansj.elasticsearch.index.config.AnsjElasticConfigurator;
-import org.ansj.lucene7.AnsjAnalyzer;
 import org.apache.logging.log4j.Logger;
 import org.elasticsearch.common.inject.Inject;
 import org.elasticsearch.common.inject.assistedinject.Assisted;
