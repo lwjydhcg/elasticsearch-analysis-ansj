@@ -4,6 +4,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -110,7 +111,7 @@ public class OptAnalysis extends Analysis {
 				}
 				result.addAll(last);
 
-				/* 不再排序，防止双引号短语查询slop bug 
+				// 不再排序，防止双引号短语查询slop bug 
 				Collections.sort(result, new Comparator<Term>() {
 				
 					@Override
@@ -121,7 +122,7 @@ public class OptAnalysis extends Analysis {
 							return o1.getOffe() - o2.getOffe();
 						}
 					}
-				}); */
+				});
 				setRealName(graph, result);
 				return result;
 			}
